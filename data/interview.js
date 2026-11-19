@@ -332,6 +332,142 @@ window.GRC_INTERVIEW = {
         "Recommending one without asking about the customer base.",
         "Going too deep into criteria IDs."
       ]
+    },
+
+    /* ---------- NIST CSF 2.0 ---------- */
+    {
+      id: "iv-nist-use", cat: "technical", module: "nist-csf", lang: "he",
+      q: "איך הייתם משתמשים ב-NIST CSF 2.0 מול לקוח?",
+      points: [
+        "**מסגרת וולונטרית ומבוססת תוצאות**, לא ניתנת להסמכה – כלי לשפה משותפת ולמדידת בשלות.",
+        "**6 פונקציות:** Govern (חדשה ב-2.0, במרכז), Identify, Protect, Detect, Respond, Recover.",
+        "**תהליך:** בונים Current Profile בראיונות ובסקירת ראיות, מגדירים Target Profile עם ההנהלה לפי תיאבון הסיכון, וגוזרים roadmap מהפער.",
+        "**Tiers** (אופציונלי) – לתאר את רמת הקפדנות של ניהול הסיכונים.",
+        "**שילוב עם ISO 27001:** ממפים בקרות קיימות – יש מיפוי ISO 27001:2022 ל-CSF 2.0 בקטלוג OLIR של NIST.",
+        "**דוח להנהלה:** ציון לכל פונקציה, Current מול Target – תמונה שדירקטוריון מבין."
+      ],
+      checking: "שאתם יודעים להפוך מסגרת לכלי עבודה מעשי ולתקשורת מול הנהלה.",
+      mistakes: [
+        "\"NIST certification\".",
+        "להכיר רק 5 פונקציות (גרסה 1.1).",
+        "לדקלם את המבנה בלי להסביר איך משתמשים בו."
+      ]
+    },
+    {
+      id: "iv-nist-en-govern", cat: "english", module: "nist-csf", lang: "en", timer: 120,
+      q: "What's new in NIST CSF 2.0, and why does it matter for a GRC consultant?",
+      points: [
+        "**Headline:** \"The biggest change is the new Govern function, which sits at the centre of the framework.\"",
+        "**Govern covers:** organizational context, risk management strategy, roles and responsibilities, policy, oversight, and cybersecurity supply chain risk management.",
+        "**Scope:** it now targets organizations of all sizes and sectors, not just critical infrastructure.",
+        "**Resources:** Implementation Examples, Quick-Start Guides and Informative References, published online.",
+        "**Why it matters:** governance is exactly where GRC work lives — risk appetite, policies, accountability and board oversight. It also gives us a clear language to report maturity to management."
+      ],
+      checking: "Being up to date, and connecting framework changes to the actual role — in English.",
+      mistakes: [
+        "Listing changes without explaining why they matter.",
+        "Calling it a standard or a certification.",
+        "Forgetting supply chain risk."
+      ]
+    },
+
+    /* ---------- GDPR ---------- */
+    {
+      id: "iv-gdpr-breach", cat: "scenarios", module: "gdpr", lang: "he",
+      q: "לקוח SaaS ישראלי עם משתמשים באירופה מגלה דליפה. מה קורה ב-72 השעות הראשונות?",
+      points: [
+        "**השעון מתחיל מרגע ה-awareness** – לא מסיום החקירה.",
+        "**הכלה וחקירה ראשונית:** מה דלף, של מי, כמה, האם המידע היה מוצפן.",
+        "**הערכת סיכון לנושאי המידע:** \"לא צפוי לגרום לסיכון\" ← תיעוד בלבד; \"סיכון\" ← דיווח לרשות הפיקוח המוסמכת תוך 72 שעות ככל האפשר (סעיף 33); \"סיכון גבוה\" ← גם הודעה לנושאי המידע (סעיף 34), אלא אם חל חריג.",
+        "**תפקיד:** האם הלקוח controller או processor? Processor מדווח ל-controller בלי שיהוי מיותר.",
+        "**הדין הישראלי במקביל:** אירוע חמור במאגר לפי התקנות ← דיווח **מיד** לרשות להגנת הפרטיות.",
+        "**תיעוד** של הכול `(33(5))` – כולל ההחלטות והנימוקים. מעורבות יועץ משפטי ו-DPO.",
+        "אפשר לדווח בשלבים, כשהמידע עוד לא מלא."
+      ],
+      checking: "שליטה במנגנון הדיווח, ההבחנה בין סיכון לסיכון גבוה, והחיבור לדין הישראלי.",
+      mistakes: [
+        "לחכות לסיום החקירה לפני דיווח.",
+        "להגיד שכל אירוע מחייב הודעה לכל המשתמשים.",
+        "לשכוח את הדיווח המקביל לפי התקנות הישראליות.",
+        "לשכוח לתעד אירוע שהוחלט לא לדווח עליו."
+      ]
+    },
+    {
+      id: "iv-gdpr-gap", cat: "technical", module: "gdpr", lang: "he",
+      q: "איך מבצעים gap assessment מול GDPR כיועצי GRC (ולא כעורכי דין)?",
+      points: [
+        "**גבולות התפקיד:** אנחנו מתרגמים דרישות לבקרות ותהליכים. שאלות משפטיות (בסיס חוקי, פרשנות) – בשיתוף היועץ המשפטי.",
+        "**תחולה ותפקיד:** האם חל (סעיף 3)? controller או processor לגבי כל סוג מידע?",
+        "**מיפוי מידע ו-RoPA:** אילו נתונים, מאיפה, למה, למי מועברים, כמה זמן נשמרים.",
+        "**בקרות:** אבטחה (סעיף 32), privacy by design, מדיניות שמירה ומחיקה.",
+        "**תהליכים:** זכויות נושאי מידע (חודש), דיווח על אירוע (72 שעות), DPIA לעיבוד בסיכון גבוה.",
+        "**ספקים:** DPA (סעיף 28), רשימת sub-processors, מנגנוני העברה (כולל הלימות לישראל).",
+        "**ממשל:** האם נדרש DPO? נציג באיחוד (סעיף 27)?",
+        "**תוצר:** דוח פערים מתועדף ו-roadmap."
+      ],
+      checking: "שאתם מבינים את הגבול בין GRC לייעוץ משפטי, ויודעים להפוך רגולציה לתוכנית עבודה.",
+      mistakes: [
+        "לתת ייעוץ משפטי חד-משמעי על בסיס חוקי.",
+        "להתמקד רק באבטחה ולשכוח זכויות, ספקים ו-RoPA.",
+        "להתחיל בלי מיפוי מידע."
+      ]
+    },
+    {
+      id: "iv-gdpr-en-dpia", cat: "english", module: "gdpr", lang: "en", timer: 120,
+      q: "When is a DPIA required under GDPR, and how is it different from a regular security risk assessment?",
+      points: [
+        "**When:** before processing that is likely to result in a high risk to individuals' rights and freedoms (Art. 35).",
+        "**Explicit cases:** systematic, extensive profiling with significant effects; large-scale special-category or criminal data; large-scale systematic monitoring of public areas.",
+        "**Minimum content:** description and purposes, necessity and proportionality, risks to individuals, and the measures to address them.",
+        "**The difference:** a security risk assessment looks at risk to the organization; a DPIA looks at risk to the people whose data is processed.",
+        "**Close:** \"If high risk remains after mitigation, the controller must consult the supervisory authority before processing (Art. 36).\""
+      ],
+      checking: "Precise knowledge of a key GDPR mechanism, and connecting it to risk methodology — in English.",
+      mistakes: [
+        "Saying a DPIA is needed for all processing.",
+        "Confusing a DPIA with a pentest or a security audit.",
+        "Forgetting that it must be done before the processing starts."
+      ]
+    },
+
+    /* ---------- Israel ---------- */
+    {
+      id: "iv-il-high", cat: "scenarios", module: "il-privacy", lang: "he",
+      q: "לקוח ישראלי מגלה שהמאגר שלו ברמת אבטחה גבוהה. מה הוא חייב לעשות, ובאיזו תדירות?",
+      points: [
+        "**לאמת את הסיווג:** מידע רגיש (או איסוף להעברה כעיסוק) **וגם** 100,000 איש או יותר **או** יותר מ-100 מורשי גישה.",
+        "**תיעוד:** מסמך הגדרות מאגר (עדכון שנתי), נוהל אבטחה, מצאי מערכות ותרשים רשת.",
+        "**סקר סיכונים ומבדקי חדירות** – לפחות אחת ל-18 חודשים, ותיקון הליקויים.",
+        "**ביקורת תקופתית** – אחת ל-24 חודשים (ברמה גבוהה אפשר במסגרת הסקר).",
+        "**בקרות:** אמצעי פיזי לזיהוי ולגישה מרחוק, תיעוד גישה עם שמירה ל-24 חודשים, ניהול הרשאות, הדרכה אחת לשנתיים, גיבוי.",
+        "**אירועים:** תיעוד, דיון לפחות פעם ברבעון, ודיווח **מיד** על אירוע חמור.",
+        "**ספקים:** סקר לפני התקשרות, הסכם ופיקוח.",
+        "**תיקון 13:** לבדוק חובת הודעה על המאגר ומינוי ממונה, ולהכיר את חשיפת העיצומים."
+      ],
+      checking: "היכרות מדויקת עם התקנות – הלחם והחמאה של לקוחות ישראליים בחברת PT.",
+      mistakes: [
+        "לבלבל בין 18 ל-24 חודשים.",
+        "להגיד \"100 מורשי גישה\" במקום \"יותר מ-100\".",
+        "לשכוח את דיון האירועים הרבעוני ואת הדיווח המיידי."
+      ]
+    },
+    {
+      id: "iv-il-a13", cat: "technical", module: "il-privacy", lang: "he",
+      q: "מה השתנה בתיקון 13 לחוק הגנת הפרטיות, ואיך זה משפיע על הלקוחות שלנו?",
+      points: [
+        "**מועדים:** התקבל ב-5.8.2024, בתוקף מ-14.8.2025.",
+        "**הגדרות:** מידע אישי, מידע בעל רגישות מיוחדת (כולל מיקום ופעילות כלכלית), בעל שליטה ומחזיק – מקבילים ל-GDPR.",
+        "**רישום:** נשאר רק לסוחרי מידע (מעל 10,000 איש) ולגופים ציבוריים. מאגר רגיש מעל 100,000 איש – הודעה תוך 30 ימים.",
+        "**ממונה על הגנת הפרטיות:** חובה לגופים ציבוריים, לסוחרי מידע, ולגופים שעיקר פעילותם ניטור שיטתי או מידע רגיש בהיקף ניכר.",
+        "**אכיפה:** עיצומים כספיים (חלקם לפי מספר האנשים במאגר), פיצויים לדוגמה עד 10,000 ₪ ועבירות פליליות.",
+        "**השפעה:** ציות הופך לסיכון עסקי מדיד; כדאי לעדכן את הערכת הסיכונים, לבדוק את חובות ההודעה והממונה, ולוודא עמידה בתקנות – עכשיו יש להן \"שיניים\"."
+      ],
+      checking: "שאתם מעודכנים ברגולציה המקומית, ויודעים לתרגם אותה להשפעה על לקוחות.",
+      mistakes: [
+        "להגיד שהתיקון עדיין לא בתוקף.",
+        "לבלבל בין רישום להודעה.",
+        "להציג סכומי קנס בלי לדעת על מה הם חלים."
+      ]
     }
 
   ]

@@ -57,7 +57,9 @@
       ? `<ul>${part.map((li) => `<li>${md(li)}</li>`).join("")}</ul>`
       : `<p>${md(part)}</p>`).join("");
   };
-  const tagList = (tags = []) => tags.length ? `<div class="tags">${tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : "";
+  const HE = /[֐-׿]/;
+  const tag = (t) => HE.test(t) ? `<span class="tag tag--he" dir="rtl">${esc(t)}</span>` : `<span class="tag" dir="ltr">${esc(t)}</span>`;
+  const tagList = (tags = []) => tags.length ? `<div class="tags">${tags.map(tag).join("")}</div>` : "";
   const bar = (p, label) => `<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(p * 100)}" aria-label="${esc(label)}"><div class="bar__fill" style="--p:${p}"></div></div>`;
   const shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -536,7 +538,7 @@
     </div>`;
   }
   function frontHTML(c, m, en) {
-    return `<div class="flip__front-meta">${m ? `<span class="tag">${esc(m.en)}</span>` : ""}${en ? `<span>English</span>` : ""}</div>
+    return `<div class="flip__front-meta">${m ? tag(m.en) : ""}${en ? `<span>English</span>` : ""}</div>
       <p class="flip__q${en ? " ltr" : ""}" ${en ? 'lang="en" dir="ltr"' : ""}>${md(c.q)}</p>
       <div class="flip__spacer"></div>
       <div class="flip__actions"><button class="btn btn--primary" type="button" data-flip aria-expanded="false">${ICON.eye}הצגת תשובה</button></div>`;
@@ -692,7 +694,7 @@
       const formula = b.formula ? b.formula.map((f) => `<div class="formula" lang="en">${esc(f)}</div>`).join("") : "";
       const items = b.items ? `<ul>${b.items.map((i) => `<li>${md(i)}</li>`).join("")}</ul>` : "";
       return `<section class="cheat-block" aria-label="${esc(b.title)}">
-        <h2>${md(b.title)} ${(b.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</h2>
+        <h2>${md(b.title)} ${(b.tags || []).map(tag).join("")}</h2>
         ${formula}${table}${items}
       </section>`;
     }).join("");

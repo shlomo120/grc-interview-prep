@@ -240,8 +240,9 @@ a.chip { text-decoration: none; }
 .tag {
   display: inline-block; font-family: var(--font-mono); font-size: .72rem; line-height: 1;
   padding: 4px 7px 3px; border-radius: 4px; border: 1px solid var(--line-strong);
-  color: var(--ink-2); background: var(--raised); direction: ltr; unicode-bidi: isolate; white-space: nowrap;
+  color: var(--ink-2); background: var(--raised); unicode-bidi: isolate; white-space: nowrap;
 }
+.tag--he { font-family: var(--font-body); font-size: .78rem; font-weight: 500; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .level { font-size: .78rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
 .level--easy { color: var(--ok); background: var(--ok-soft); }
