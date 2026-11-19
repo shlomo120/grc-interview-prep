@@ -468,6 +468,213 @@ window.GRC_INTERVIEW = {
         "לבלבל בין רישום להודעה.",
         "להציג סכומי קנס בלי לדעת על מה הם חלים."
       ]
+    },
+
+    /* ---------- Documentation ---------- */
+    {
+      id: "iv-docs-hierarchy", cat: "technical", module: "docs", lang: "he",
+      q: "מה ההבדל בין Policy, Standard, Procedure ו-Guideline?",
+      points: [
+        "**Policy** – מה ולמה; עקרונות; מאושרת ע\"י ההנהלה; מחייבת; משתנה לעיתים רחוקות.",
+        "**Standard** – דרישות מדידות שמממשות את המדיניות; מחייב.",
+        "**Procedure** – איך, צעד אחר צעד, עם תפקידים וזמנים; מחייב.",
+        "**Guideline** – המלצות; לא מחייבת.",
+        "**דוגמה אחת לאורך כל הרמות** – למשל גישה מרחוק: עיקרון → MFA חובה → שלבי ההגדרה ב-IdP → המלצה למנהל סיסמאות.",
+        "**בקרת מסמכים:** בעלים, אישור, גרסה, סקירה שנתית, תהליך חריגות."
+      ],
+      checking: "יסודות, והאם אתם מבינים איך המסמכים מתחברים זה לזה ולביקורת.",
+      mistakes: [
+        "הגדרות בלי דוגמה.",
+        "להגיד שהנחיה מחייבת.",
+        "לשכוח את מחזור הסקירה ואת תהליך החריגות."
+      ]
+    },
+    {
+      id: "iv-docs-write", cat: "technical", module: "docs", lang: "he",
+      q: "איך הייתם כותבים נוהל Vulnerability Management ללקוח?",
+      points: [
+        "**מתחילים בראיונות:** איך מזהים חולשות היום, מי מתקן, אילו כלים, מה הבעיות.",
+        "**היקף ומלאי נכסים**, כולל ענן, קוד וספריות צד שלישי.",
+        "**זיהוי:** סריקות בתדירות מוגדרת, PT, מודיעין, bug bounty.",
+        "**תעדוף:** CVSS יחד עם ההקשר – חשיפה, קריטיות הנכס, ניצול פעיל (KEV / EPSS).",
+        "**SLA לפי רמת סיכון**, נקבע עם הלקוח ולפי תיאבון הסיכון.",
+        "**טיפול:** תיקון, בקרה מפצה או קבלת סיכון מתועדת עם תאריך תפוגה.",
+        "**אימות:** retest; **מדדים:** חולשות פתוחות לפי גיל וחומרה, עמידה ב-SLA.",
+        "**תפקידים (RACI)** וראיות לכל שלב – כך הנוהל עומד גם מול מבקר."
+      ],
+      checking: "יכולת מעשית לכתוב את המסמכים שבתיאור המשרה, בחיבור לעולם של חברת PT.",
+      mistakes: [
+        "להעתיק תבנית בלי להתאים למציאות.",
+        "SLA לפי CVSS בלבד.",
+        "לשכוח את מסלול החריגות ואת הבדיקה החוזרת."
+      ]
+    },
+    {
+      id: "iv-docs-compensating", cat: "scenarios", module: "docs", lang: "he",
+      q: "הלקוח אומר: \"אין לנו MFA בשרת הזה, אבל יש לנו compensating control\". מה בודקים?",
+      points: [
+        "**מה בדיוק הבקרה?** לבקש תיאור וראיה, לא רק אמירה.",
+        "**האם היא מכסה את אותו סיכון?** MFA מגן מפני גניבת סיסמה. בקרה מפצה טובה מצמצמת את אותו תרחיש – למשל גישה רק דרך jump host עם MFA והגבלת IP.",
+        "**האם היא פועלת ונבדקת?** לוגים, ניטור, ראיה שהתרעות מטופלות.",
+        "**האם היא מתועדת כחריגה** – עם הערכת סיכון, אישור בעל הסיכון ותאריך תפוגה?",
+        "**האם יש תוכנית** לפתרון הקבע?",
+        "**מסקנה מנומקת בדוח:** מקובל, מקובל בתנאים, או לא מכסה – ולמה."
+      ],
+      checking: "חשיבה ביקורתית מכבדת: לא דוחים אוטומטית, ולא מקבלים על סמך מילים.",
+      mistakes: [
+        "לקבל את הטענה בלי ראיה.",
+        "לדחות כל בקרה מפצה אוטומטית.",
+        "לא לבדוק אם הבקרה מכסה את אותו סיכון בדיוק."
+      ]
+    },
+    {
+      id: "iv-docs-en-rto", cat: "english", module: "docs", lang: "en", timer: 120,
+      q: "Explain the difference between RTO and RPO, and how they shape a client's backup and DR strategy.",
+      points: [
+        "**RTO – Recovery Time Objective:** how quickly a system must be back up after a disruption.",
+        "**RPO – Recovery Point Objective:** how much data loss, measured in time, is acceptable.",
+        "**Who sets them:** the business, through a Business Impact Analysis — not IT.",
+        "**How they drive design:** RPO drives backup frequency and replication; RTO drives the recovery architecture — warm standby, multi-region, runbooks.",
+        "**Example:** a payments platform might need RTO of one hour and RPO of minutes; a marketing site can live with a day.",
+        "**Close:** \"And we test restores regularly — an untested backup is just an assumption.\""
+      ],
+      checking: "Clear definitions and the ability to connect them to business decisions — in English.",
+      mistakes: [
+        "Swapping the definitions.",
+        "Saying IT decides the targets.",
+        "Forgetting restore testing."
+      ]
+    },
+
+    /* ---------- Pentest → GRC ---------- */
+    {
+      id: "iv-pt-cvss", cat: "depth", module: "pentest-grc", lang: "he",
+      q: "איך מתעדפים ממצאים – לפי CVSS או לפי סיכון עסקי?",
+      points: [
+        "**CVSS מודד חומרה, לא סיכון** – כך כותבים FIRST עצמם במדריך של v4.0. ציון ה-Base צריך להשלמה בהקשר (Threat, Environmental).",
+        "**סבירות:** חשיפה לאינטרנט, ניצול בפועל (CISA KEV), הסתברות לניצול (EPSS), קלות הניצול.",
+        "**השפעה:** קריטיות הנכס, סוג המידע (אישי, רגיש), תלות עסקית, רגולציה.",
+        "**בקרות מפצות** שמקטינות סבירות או השפעה.",
+        "**מודלים:** SSVC, ו-BOD 26-04 של CISA (יוני 2026) שקובעת זמני תיקון לפי חשיפה, KEV, אוטומציה של הניצול והשפעה.",
+        "**דוגמה:** CVSS 7.5 ב-KEV על VPN חשוף קודם ל-CVSS 9.1 בשרת פנימי בלי ניצול ידוע."
+      ],
+      checking: "השאלה הכי \"חברת PT\" שיש – האם אתם מגשרים בין הטכני לעסקי.",
+      mistakes: [
+        "\"מתקנים לפי CVSS מהגבוה לנמוך\".",
+        "לצטט את לוחות הזמנים של `BOD 22-01` כאילו הם עדיין בתוקף.",
+        "לשכוח את ההקשר העסקי ואת בקרות הפיצוי."
+      ]
+    },
+    {
+      id: "iv-pt-owasp", cat: "depth", module: "pentest-grc", lang: "he",
+      q: "ספרו על OWASP Top 10, ותנו דוגמה לאיך ממצא מהרשימה הופך לסיכון עסקי.",
+      points: [
+        "**המהדורה הנוכחית היא 2025:** A01 Broken Access Control (כולל SSRF), A02 Security Misconfiguration, A03 Software Supply Chain Failures, A04 Cryptographic Failures, A05 Injection, A06 Insecure Design, A07 Authentication Failures, A08 Software or Data Integrity Failures, A09 Logging and Alerting Failures, A10 Mishandling of Exceptional Conditions.",
+        "**מגמות:** Access Control ראשון, תצורות שגויות עלו, שרשרת אספקה קיבלה קטגוריה משלה.",
+        "**דוגמה – IDOR (A01):** \"כל משתמש רשום יכול לצפות בחשבוניות של כל הלקוחות\" → דליפת מידע אישי → חובות דיווח (GDPR, הדין הישראלי) → פגיעה באמון.",
+        "**המלצה בשלוש שכבות:** תיקון בדיקת ההרשאה; מנגנון הרשאות מרכזי; בדיקות הרשאה אוטומטיות ב-CI ו-secure coding standard `(A.8.28)`.",
+        "**מיפוי:** ISO `A.8.3` / `A.8.28`, SOC 2 `CC6`, NIST `PR.AA`."
+      ],
+      checking: "עדכניות מקצועית ויכולת תרגום – בדיוק ה-bridge שבתיאור המשרה.",
+      mistakes: [
+        "לצטט את רשימת 2021 כעדכנית.",
+        "לעצור בתיאור הטכני בלי השפעה עסקית.",
+        "המלצה של \"לתקן את הבאג\" בלבד."
+      ]
+    },
+    {
+      id: "iv-pt-pushback", cat: "behavioral", module: "pentest-grc", lang: "he",
+      q: "ספרו על פעם שלקוח או צוות פיתוח דחו ממצא שלכם (\"זה לא באמת בעיה\"). איך התמודדתם?",
+      points: [
+        "**S/T:** ממצא שהצוות טען שהוא \"תיאורטי\", או שהחומרה מוגזמת.",
+        "**A:** הקשבתם – אולי יש הקשר שלא ידעתם (בקרה מפצה, חשיפה מוגבלת). הצגתם ראיות (PoC, תרחיש ניצול), ותרגמתם להשפעה עסקית. הייתם מוכנים לשנות את הדירוג אם הוצגו עובדות – אבל לא בגלל לחץ.",
+        "**הסלמה מסודרת:** אם יש מחלוקת – מתעדים את העמדות, ומעבירים להחלטת בעל הסיכון (Accept מתועד).",
+        "**R:** תוצאה – תיקון, או קבלת סיכון מתועדת – ויחסים טובים שנשמרו.",
+        "**לקח:** המטרה היא החלטה מושכלת, לא לנצח בוויכוח."
+      ],
+      checking: "יושרה מקצועית יחד עם גמישות ותקשורת – \"pushback on a finding\" מופיע במפורש בבריף.",
+      mistakes: [
+        "להתקפל מיד ולמחוק את הממצא.",
+        "להתעקש בלי להקשיב לטיעונים.",
+        "לא לתעד את ההחלטה הסופית."
+      ]
+    },
+    {
+      id: "iv-pt-en-exec", cat: "english", module: "pentest-grc", lang: "en", timer: 120,
+      q: "Explain a critical pentest finding to a non-technical executive.",
+      points: [
+        "**Start with the impact:** \"Any registered user can see every other customer's invoices and personal data.\"",
+        "**Why it matters:** regulatory exposure (GDPR, Israeli privacy law), contractual obligations to customers, and reputational damage.",
+        "**How likely:** \"It requires only a normal account and no special skills.\"",
+        "**What we recommend:** an immediate fix, a change to how access checks are built, and automated tests so it doesn't come back.",
+        "**What we need from you:** priority over the next release and an owner on the engineering side.",
+        "Avoid jargon — no CVSS, no IDOR — unless they ask."
+      ],
+      checking: "Executive communication in English: impact first, clear ask, no jargon.",
+      mistakes: [
+        "Opening with the technical details.",
+        "Not stating what decision or resource you need.",
+        "Exaggerating or using fear instead of facts."
+      ]
+    },
+
+    /* ---------- Vendor risk ---------- */
+    {
+      id: "iv-ven-program", cat: "technical", module: "vendor", lang: "he",
+      q: "איך הייתם בונים תוכנית ניהול סיכוני ספקים ללקוח?",
+      points: [
+        "**מלאי ספקים** – מהנהלת החשבונות, מה-SSO ומראיונות; מה כל ספק עושה ולמה הוא ניגש.",
+        "**דירוג קריטיות** – מידע, גישה למערכות, תלות עסקית, רגולציה. העומק נגזר מהדירוג.",
+        "**בדיקת נאותות** – SOC 2 / ISO (לבדוק היקף ותוקף), שאלון (SIG / CAIQ), PT, מדיניות.",
+        "**חוזה** – דרישות אבטחה, DPA, דיווח על אירוע בזמן מוגדר, זכות ביקורת, ספקי משנה, מחיקה בסיום.",
+        "**ניטור** – הערכה מחדש שנתית לקריטיים, דוחות מתעדכנים, מעקב אירועים, fourth parties.",
+        "**סיום** – ביטול גישות ומחיקת מידע עם אישור.",
+        "**מסגרות:** ISO `A.5.19`–`A.5.23`, SOC 2 `CC9`, NIST `GV.SC`, GDPR סעיף 28, תקנה 15."
+      ],
+      checking: "יכולת לבנות תהליך שלם ומדורג לפי סיכון – לא רק \"לשלוח שאלון\".",
+      mistakes: [
+        "לשלוח את אותו שאלון ארוך לכל הספקים.",
+        "לקבל תעודה בלי לבדוק את ההיקף.",
+        "לשכוח את החוזה ואת סיום ההתקשרות."
+      ]
+    },
+    {
+      id: "iv-ven-questionnaire", cat: "scenarios", module: "vendor", lang: "he",
+      q: "לקוח SaaS מקבל עשרות שאלוני אבטחה בחודש, וזה מעכב מכירות. מה הייתם מציעים?",
+      points: [
+        "**ספריית תשובות** מאושרת, עם בעלים ותחזוקה.",
+        "**ראיות במקום טקסט:** דוח SOC 2 / תעודת ISO תחת NDA, מדיניות.",
+        "**Trust Center** עם מסמכים ציבוריים ותחת NDA.",
+        "**שאלונים סטנדרטיים מוכנים מראש:** SIG Lite, CAIQ (ופרסום ב-CSA STAR).",
+        "**כנות:** \"לא\" עם תוכנית עדיף על \"כן\" שגוי – תשובות הופכות להתחייבויות.",
+        "**לולאת משוב:** שאלות חוזרות חושפות פערים אמיתיים → roadmap.",
+        "**כלים:** פלטפורמות אוטומציה יכולות לעזור, אבל צריך מישהו שמאשר תוכן."
+      ],
+      checking: "הבנה של הצד העסקי של GRC, ויכולת להפוך עבודה ידנית לתהליך.",
+      mistakes: [
+        "להציע לענות \"כן\" על הכול.",
+        "לא להשתמש בראיות קיימות (SOC 2 / ISO).",
+        "לא לחבר את השאלות החוזרות לפערים אמיתיים."
+      ]
+    },
+    {
+      id: "iv-ven-en-soc", cat: "english", module: "vendor", lang: "en", timer: 120,
+      q: "A critical vendor sends you their SOC 2 Type II report. What do you look for?",
+      points: [
+        "**Period and freshness:** when did the period end? If there's a gap, ask for a bridge letter.",
+        "**Scope:** is the service we actually buy in scope? Which Trust Services Categories are covered?",
+        "**Opinion:** unqualified, qualified, adverse or disclaimer.",
+        "**Exceptions:** what failed, in which area, and management's response.",
+        "**Subservice organizations:** carve-out or inclusive? Do we need reports from their key subservice providers?",
+        "**CUECs:** which controls we must operate on our side — and confirm we actually do.",
+        "**Close:** \"Then I summarise the residual risk and recommend approve, approve with conditions, or request more information.\""
+      ],
+      checking: "Practical vendor-review skill, explained clearly in English.",
+      mistakes: [
+        "Reading only the opinion page.",
+        "Ignoring CUECs.",
+        "Not checking that the purchased service is in scope."
+      ]
     }
 
   ]

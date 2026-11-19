@@ -236,6 +236,82 @@ window.GRC_CHEAT = [
       "**אכיפה:** עיצומים (קבועים או לפי מספר האנשים; הפחתות עד 70%, תקרה 5% ממחזור לבקשת המפר) · פיצויים לדוגמה עד **10,000 ₪** · עבירות פליליות.",
       "**מול GDPR:** \"מיד\" ↔ 72 שעות · מרשמי ↔ מבוסס סיכון."
     ]
+  },
+
+  /* ---------- Documentation ---------- */
+  {
+    id: "c-docs-hierarchy", module: "docs", title: "היררכיית מסמכים", tags: ["Policy → Guideline"],
+    table: {
+      head: ["סוג", "עונה על", "מחייב?", "דוגמה"],
+      rows: [
+        ["`Policy`", "מה ולמה", "כן", "גישה לפי הרשאה מינימלית"],
+        ["`Standard`", "דרישה מדידה", "כן", "MFA לכל גישה מרחוק"],
+        ["`Procedure`", "איך, צעד אחר צעד", "כן", "שלבי פתיחת הרשאה"],
+        ["`Guideline`", "המלצה", "**לא**", "מומלץ מנהל סיסמאות"]
+      ]
+    },
+    items: ["בקרת מסמכים: בעלים · אישור · גרסה · סקירה שנתית · חריגות (בקרה מפצה + תפוגה)."]
+  },
+  {
+    id: "c-docs-procs", module: "docs", title: "מה חייב להיות בכל נוהל", tags: ["JD procedures"],
+    items: [
+      "**Patch:** מלאי · מקורות · SLA לפי חומרה וחשיפה · בדיקות ו-rollback · חירום · חריגות · אימות.",
+      "**Vulnerability:** זיהוי → תעדוף (CVSS + הקשר, KEV/EPSS) → טיפול → **retest** → מדדים.",
+      "**Access:** least privilege · joiner/mover/leaver · MFA · privileged/PAM · **סקירה תקופתית**.",
+      "**IR:** תפקידים · שלבים · **עץ החלטת דיווח** (\"מיד\" / 72h) · ראיות · תרגול · לקחים.",
+      "**Change:** סוגים · אישור לפי סיכון · הפרדת תפקידים · סביבות · חירום מאושר בדיעבד.",
+      "**Backup:** RPO → תדירות · מבודד/immutable · הצפנה · **בדיקות שחזור**.",
+      "**BCP/DR:** BIA → **RTO** (זמן) / **RPO** (נתונים) · נקבעים ע\"י העסק · תרגול."
+    ]
+  },
+
+  /* ---------- Pentest → GRC ---------- */
+  {
+    id: "c-pt-owasp", module: "pentest-grc", title: "OWASP Top 10:2025", tags: ["owasp.org"],
+    items: [
+      "`A01 Broken Access Control (+SSRF) · A02 Security Misconfiguration · A03 Software Supply Chain Failures`",
+      "`A04 Cryptographic Failures · A05 Injection · A06 Insecure Design · A07 Authentication Failures`",
+      "`A08 Software or Data Integrity Failures · A09 Logging & Alerting Failures · A10 Mishandling of Exceptional Conditions`",
+      "מול 2021: SSRF ← A01 · Outdated Components ← A03 · A10 חדש."
+    ]
+  },
+  {
+    id: "c-pt-prior", module: "pentest-grc", title: "חומרה מול סיכון", tags: ["CVSS v4.0", "EPSS", "KEV"],
+    items: [
+      "**CVSS v4.0** (FIRST, 11/2023): Base · Threat · Environmental · Supplemental. None 0 · Low 0.1–3.9 · Medium 4–6.9 · High 7–8.9 · Critical 9–10.",
+      "**CVSS = חומרה, לא סיכון** (FIRST).",
+      "**EPSS** = הסתברות לניצול ב-30 ימים · **KEV** = נוצלה בפועל · **SSVC** = Track / Track* / Attend / Act.",
+      "**`BOD 26-04`** (6/2026) החליפה את **`BOD 22-01`**: זמני תיקון לפי חשיפה + KEV + אוטומציה + השפעה (3 ימים ← תיקון בשדרוג).",
+      "**ניסוח:** בשל [חולשה], [מי] עלול [פעולה] → [השפעה עסקית].",
+      "**המלצה:** תיקון · שורש · בקרה/תהליך → retest."
+    ]
+  },
+  {
+    id: "c-pt-map", module: "pentest-grc", title: "מיפוי ממצאים", tags: ["Mapping"],
+    table: {
+      head: ["ממצא", "ISO 27001", "SOC 2", "NIST"],
+      rows: [
+        ["IDOR / Access", "`A.8.3` `A.8.28`", "`CC6`", "`PR.AA`"],
+        ["אין MFA", "`A.8.5`", "`CC6`", "`PR.AA`"],
+        ["עדכונים חסרים", "`A.8.8`", "`CC7`", "`ID.RA`"],
+        ["תצורת ענן", "`A.8.9` `A.5.23`", "`CC6`", "`PR.PS`"],
+        ["אין לוגים", "`A.8.15` `A.8.16`", "`CC7`", "`DE.CM`"]
+      ]
+    },
+    items: ["ישראל: MFA ← תקנות 9, 14 · לוגים ← תקנה 10 · PT ← תקנה 5 (גבוהה, 18 חודשים)."]
+  },
+
+  /* ---------- Vendor risk ---------- */
+  {
+    id: "c-ven", module: "vendor", title: "ניהול סיכוני ספקים", tags: ["TPRM"],
+    items: [
+      "**מחזור:** מלאי → דירוג → due diligence → חוזה → ניטור → סיום.",
+      "**ראיות:** SOC 2 (תקופה, היקף, חריגים, CUECs) · ISO (**היקף**, 2022, תוקף) · SIG / CAIQ · PT.",
+      "**SIG** (Shared Assessments): Lite / Core · **CAIQ** (CSA): כן/לא בתוך CCM 4.1 · **STAR** = מרשם ציבורי.",
+      "**חוזה:** דרישות אבטחה · DPA · **דיווח על אירוע** · זכות ביקורת · ספקי משנה · מחיקה בסיום.",
+      "**גישה:** least privilege · MFA · JIT · חשבון אישי · ניטור.",
+      "**מסגרות:** `A.5.19–A.5.23` · `CC9` · `GV.SC` · GDPR 28 · תקנה 15."
+    ]
   }
 
 ];
