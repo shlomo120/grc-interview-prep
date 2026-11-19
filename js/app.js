@@ -310,8 +310,9 @@
   }
 
   function quizSetupHTML() {
-    const pool = filteredPool();
     const wrongN = state.quiz.wrong.filter((id) => QUIZ.some((q) => q.id === id)).length;
+    if (quizSetup.mode === "wrong" && !wrongN) quizSetup.mode = "all"; // nothing left to retry
+    const pool = filteredPool();
     const last = state.quiz.history[state.quiz.history.length - 1];
     const mods = quizModules().map((m) => {
       const c = QUIZ.filter((q) => q.module === m.id).length;
@@ -739,7 +740,7 @@
     }
     const theme = state.theme;
     state = defaults(); state.theme = theme; save();
-    quiz = null; dlg.close(); render();
+    quiz = null; quizSetup.mode = "all"; dlg.close(); render();
   });
   dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
 
