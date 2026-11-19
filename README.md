@@ -7,7 +7,7 @@ No backend and no build step. Open `index.html` directly, or serve the folder wi
 
 ## Live site
 
-🔗 **[Open the study site](https://GITHUB-PAGES-URL-PLACEHOLDER)**
+🔗 **[Open the study site](https://shlomo120.github.io/grc-interview-prep/)**
 
 <!-- TODO: replace https://GITHUB-PAGES-URL-PLACEHOLDER with the GitHub Pages URL once Pages is enabled
      (Settings → Pages → Deploy from branch → main / root). It usually looks like:
