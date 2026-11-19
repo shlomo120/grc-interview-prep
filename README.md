@@ -5,6 +5,16 @@ learning modules, a multiple-choice quiz, interview flip cards, a tools referenc
 
 No backend and no build step. Open `index.html` directly, or serve the folder with any static host (GitHub Pages).
 
+## Live site
+
+🔗 **[Open the study site](https://GITHUB-PAGES-URL-PLACEHOLDER)**
+
+<!-- TODO: replace https://GITHUB-PAGES-URL-PLACEHOLDER with the GitHub Pages URL once Pages is enabled
+     (Settings → Pages → Deploy from branch → main / root). It usually looks like:
+     https://<username>.github.io/<repo-name>/ -->
+
+**Contents:** 10 learning modules · 142 quiz questions · 52 interview flip cards · tools reference · printable cheat sheet.
+
 ## Structure
 
 ```
