@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GRC Consultant · הכנה לראיון</title>
+  <meta name="description" content="אתר לימוד והכנה לראיון לתפקיד Cybersecurity GRC Consultant">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230d6e66%27/%3E%3Cpath d=%27M9 16.5l4.5 4.5L23 11.5%27 stroke=%27white%27 stroke-width=%273%27 fill=%27none%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f7f8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e151b">
+  <script>
+    // Apply saved/system theme before first paint (no flash).
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem('grc-study-v1') || '{}');
+        var t = s.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Rubik:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#view">דילוג לתוכן</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#/learn" aria-label="דף הבית – לימוד">
+        <span class="brand__mark" aria-hidden="true">GRC</span>
+        <span class="brand__text">הכנה לראיון</span>
+      </a>
+      <nav class="nav nav--top" aria-label="ניווט ראשי"></nav>
+      <div class="topbar__actions">
+        <button class="icon-btn" id="progressBtn" type="button" aria-label="התקדמות ואיפוס" aria-haspopup="dialog"></button>
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="החלפת ערכת צבעים"></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <nav class="nav nav--bottom" aria-label="ניווט ראשי"></nav>
+
+  <dialog class="sheet" id="progressDialog" aria-labelledby="progressTitle">
+    <form method="dialog" class="sheet__body">
+      <h2 id="progressTitle">ההתקדמות שלי</h2>
+      <div id="progressSummary"></div>
+      <p class="muted small">ההתקדמות נשמרת רק בדפדפן הזה (localStorage).</p>
+      <div class="sheet__actions">
+        <button type="button" class="btn btn--danger" id="resetBtn">איפוס כל ההתקדמות</button>
+        <button class="btn btn--ghost" value="close">סגירה</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="data/learn.js"></script>
+  <script src="data/quiz.js"></script>
+  <script src="data/interview.js"></script>
+  <script src="data/tools.js"></script>
+  <script src="data/cheatsheet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
